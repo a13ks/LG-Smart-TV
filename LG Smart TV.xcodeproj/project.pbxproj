@@ -11,6 +11,7 @@
 		5D1CAAC726F3CA9400CB4218 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CAAC626F3CA9400CB4218 /* ContentView.swift */; };
 		5D1CAAC926F3CA9500CB4218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1CAAC826F3CA9500CB4218 /* Assets.xcassets */; };
 		5D1CAACC26F3CA9500CB4218 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1CAACB26F3CA9500CB4218 /* Preview Assets.xcassets */; };
+		5D1CAAD526F3CF2C00CB4218 /* WebSocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,8 @@
 		5D1CAAC826F3CA9500CB4218 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5D1CAACB26F3CA9500CB4218 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5D1CAACD26F3CA9500CB4218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D1CAAD326F3CD6900CB4218 /* LG Smart TV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LG Smart TV.entitlements"; sourceTree = "<group>"; };
+		5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketConnection.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,8 @@
 		5D1CAAC326F3CA9400CB4218 /* LG Smart TV */ = {
 			isa = PBXGroup;
 			children = (
+				5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */,
+				5D1CAAD326F3CD6900CB4218 /* LG Smart TV.entitlements */,
 				5D1CAAC426F3CA9400CB4218 /* LG_Smart_TVApp.swift */,
 				5D1CAAC626F3CA9400CB4218 /* ContentView.swift */,
 				5D1CAAC826F3CA9500CB4218 /* Assets.xcassets */,
@@ -138,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1CAAD526F3CF2C00CB4218 /* WebSocketConnection.swift in Sources */,
 				5D1CAAC726F3CA9400CB4218 /* ContentView.swift in Sources */,
 				5D1CAAC526F3CA9400CB4218 /* LG_Smart_TVApp.swift in Sources */,
 			);
@@ -267,6 +273,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "LG Smart TV/LG Smart TV.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LG Smart TV/Preview Content\"";
 				DEVELOPMENT_TEAM = 83M8JQW8EB;
@@ -289,6 +296,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "LG Smart TV/LG Smart TV.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"LG Smart TV/Preview Content\"";
 				DEVELOPMENT_TEAM = 83M8JQW8EB;
