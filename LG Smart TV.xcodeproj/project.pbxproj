@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		5D1CAAC926F3CA9500CB4218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1CAAC826F3CA9500CB4218 /* Assets.xcassets */; };
 		5D1CAACC26F3CA9500CB4218 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1CAACB26F3CA9500CB4218 /* Preview Assets.xcassets */; };
 		5D1CAAD526F3CF2C00CB4218 /* WebSocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */; };
+		5D1CAAD826F3DA1E00CB4218 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5D1CAAD726F3DA1E00CB4218 /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D1CAAD826F3DA1E00CB4218 /* SwiftyJSON in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +92,9 @@
 			dependencies = (
 			);
 			name = "LG Smart TV";
+			packageProductDependencies = (
+				5D1CAAD726F3DA1E00CB4218 /* SwiftyJSON */,
+			);
 			productName = "LG Smart TV";
 			productReference = 5D1CAAC126F3CA9400CB4218 /* LG Smart TV.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +122,9 @@
 				Base,
 			);
 			mainGroup = 5D1CAAB826F3CA9400CB4218;
+			packageReferences = (
+				5D1CAAD626F3DA1E00CB4218 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 5D1CAAC226F3CA9400CB4218 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -336,6 +344,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D1CAAD626F3DA1E00CB4218 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5D1CAAD726F3DA1E00CB4218 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D1CAAD626F3DA1E00CB4218 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5D1CAAB926F3CA9400CB4218 /* Project object */;
 }
