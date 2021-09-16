@@ -14,7 +14,10 @@ struct ContentView: View {
     
     init() {
         let userDefaults = UserDefaults(suiteName: ContentView.suiteName)
-        userInput = (userDefaults?.string(forKey: "ipAddress"))!
+        
+        if userDefaults != nil {
+            userInput = (userDefaults?.string(forKey: "ipAddress"))!
+        }
     }
     
     var body: some View {
@@ -28,11 +31,28 @@ struct ContentView: View {
                     .padding()
                 Spacer().frame(height: 10)
                 Button("Pair") {
-                    
+
                 }.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
             }
         } else {
-            
+            VStack {
+                Spacer().frame(height: 10)
+                Text("TV Paired").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                Spacer().frame(height: 10)
+                Text(ipAddress).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                TextField("URL", text: $userInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                Spacer().frame(height: 10)
+                Button("Go to website") {
+                    
+                }.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                Spacer().frame(height: 30)
+                Spacer().frame(height: 10)
+                Button("Pair with other TV") {
+
+                }
+            }
         }
     }
 }
