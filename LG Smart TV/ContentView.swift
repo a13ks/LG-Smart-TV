@@ -1,6 +1,22 @@
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View, WebSocketConnectionDelegate {
+    func onConnected(connection: WebSocketConnection) {
+        print("connected")
+    }
+    
+    func onDisconnected(connection: WebSocketConnection, error: Error?) {
+        print("disconnected")
+    }
+    
+    func onError(connection: WebSocketConnection, error: Error) {
+        print("error occurred")
+    }
+    
+    func onMessage(connection: WebSocketConnection, text: String) {
+        print("got message")
+    }
+    
     static let suiteName = "group.org.a13ks.lgtv"
 
     @AppStorage("ipAddress", store: UserDefaults(suiteName: suiteName))
@@ -12,11 +28,17 @@ struct ContentView: View {
     @State
     var userInput: String = ""
     
+    @State
+    var tvWebSocket: WebSocketConnection?
+    
     init() {
         let userDefaults = UserDefaults(suiteName: ContentView.suiteName)
         
         if userDefaults != nil {
-            userInput = (userDefaults?.string(forKey: "ipAddress"))!
+            var ip = (userDefaults?.string(forKey: "ipAddress"))
+            if ip != nil {
+                userInput = ip!
+            }
         }
     }
     
@@ -31,7 +53,14 @@ struct ContentView: View {
                     .padding()
                 Spacer().frame(height: 10)
                 Button("Pair") {
+                    ipAddress = userInput
+                    let url = URL(string: "ws://\(userInput):3000")
+                    tvWebSocket = WebSocketTaskConnection(url: url!)
 
+                    tvWebSocket?.delegate = self
+                    
+                    tvWebSocket?.connect()
+                    tvWebSocket?.register()
                 }.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
             }
         } else {
@@ -50,7 +79,7 @@ struct ContentView: View {
                 Spacer().frame(height: 30)
                 Spacer().frame(height: 10)
                 Button("Pair with other TV") {
-
+                    clientKey = ""
                 }
             }
         }

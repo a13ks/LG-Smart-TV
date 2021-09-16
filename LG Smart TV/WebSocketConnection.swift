@@ -3,12 +3,11 @@ import Combine
 import Network
 
 protocol WebSocketConnection {
-    func send(text: String)
-    func send(data: Data)
     func connect()
     func register()
     func disconnect()
     func openUrl(url: String)
+
     var delegate: WebSocketConnectionDelegate? {
         get
         set
@@ -20,7 +19,6 @@ protocol WebSocketConnectionDelegate {
     func onDisconnected(connection: WebSocketConnection, error: Error?)
     func onError(connection: WebSocketConnection, error: Error)
     func onMessage(connection: WebSocketConnection, text: String)
-    func onMessage(connection: WebSocketConnection, data: Data)
 }
 
 class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocketDelegate {
@@ -29,6 +27,7 @@ class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocke
     var urlSession: URLSession!
     let delegateQueue = OperationQueue()
     var connection: NWConnection?
+    var commandId = 1
     
     init(url: URL) {
         super.init()
@@ -55,6 +54,13 @@ class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocke
         send(text: hello)
     }
     
+    func register(clientKey: String) {
+        var hello = "{\"type\":\"register\",\"id\":\"register_0\",\"payload\":{\"forcePairing\":false,\"pairingType\":\"PROMPT\",\"client-key\":\"\(clientKey)\",\"manifest\":{\"manifestVersion\":1,\"appVersion\":\"1.1\",\"signed\":{\"created\":\"20140509\",\"appId\":\"com.lge.test\",\"vendorId\":\"com.lge\",\"localizedAppNames\":{\"\":\"LG Remote App\",\"ko-KR\":\"리모컨 앱\",\"zxx-XX\":\"ЛГ Rэмotэ AПП\"},\"localizedVendorNames\":{\"\":\"LG Electronics\"},\"permissions\":[\"TEST_SECURE\",\"CONTROL_INPUT_TEXT\",\"CONTROL_MOUSE_AND_KEYBOARD\",\"READ_INSTALLED_APPS\",\"READ_LGE_SDX\",\"READ_NOTIFICATIONS\",\"SEARCH\",\"WRITE_SETTINGS\",\"WRITE_NOTIFICATION_ALERT\",\"CONTROL_POWER\",\"READ_CURRENT_CHANNEL\",\"READ_RUNNING_APPS\",\"READ_UPDATE_INFO\",\"UPDATE_FROM_REMOTE_APP\",\"READ_LGE_TV_INPUT_EVENTS\",\"READ_TV_CURRENT_TIME\"],\"serial\":\"2f930e2d2cfe083771f68e4fe7bb07\"},\"permissions\":[\"LAUNCH\",\"LAUNCH_WEBAPP\",\"APP_TO_APP\",\"CLOSE\",\"TEST_OPEN\",\"TEST_PROTECTED\",\"CONTROL_AUDIO\",\"CONTROL_DISPLAY\",\"CONTROL_INPUT_JOYSTICK\",\"CONTROL_INPUT_MEDIA_RECORDING\",\"CONTROL_INPUT_MEDIA_PLAYBACK\",\"CONTROL_INPUT_TV\",\"CONTROL_POWER\",\"READ_APP_STATUS\",\"READ_CURRENT_CHANNEL\",\"READ_INPUT_DEVICE_LIST\",\"READ_NETWORK_STATE\",\"READ_RUNNING_APPS\",\"READ_TV_CHANNEL_LIST\",\"WRITE_NOTIFICATION_TOAST\",\"READ_POWER_STATE\",\"READ_COUNTRY_INFO\"],\"signatures\":[{\"signatureVersion\":1,\"signature\":\"eyJhbGdvcml0aG0iOiJSU0EtU0hBMjU2Iiwia2V5SWQiOiJ0ZXN0LXNpZ25pbmctY2VydCIsInNpZ25hdHVyZVZlcnNpb24iOjF9.hrVRgjCwXVvE2OOSpDZ58hR+59aFNwYDyjQgKk3auukd7pcegmE2CzPCa0bJ0ZsRAcKkCTJrWo5iDzNhMBWRyaMOv5zWSrthlf7G128qvIlpMT0YNY+n/FaOHE73uLrS/g7swl3/qH/BGFG2Hu4RlL48eb3lLKqTt2xKHdCs6Cd4RMfJPYnzgvI4BNrFUKsjkcu+WD4OO2A27Pq1n50cMchmcaXadJhGrOqH5YmHdOCj5NSHzJYrsW0HPlpuAx/ECMeIZYDh6RMqaFM2DXzdKX9NmmyqzJ3o/0lkk/N97gfVRLW5hA29yeAwaCViZNCP8iC9aO0q9fQojoa7NQnAtw==\"}]}}}";
+        
+        send(text: hello)
+
+    }
+    
     func connect() {
         webSocketTask.resume()
         
@@ -73,9 +79,9 @@ class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocke
             case .success(let message):
                 switch message {
                 case .string(let text):
-                    self.delegate?.onMessage(connection: self, text: text)
-                case .data(let data):
-                    self.delegate?.onMessage(connection: self, data: data)
+                    self.onMessage(text: text)
+                case .data(_):
+                    fatalError() // not supported
                 @unknown default:
                     fatalError()
                 }
@@ -86,6 +92,8 @@ class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocke
     }
     
     func send(text: String) {
+        commandId += 1
+
         webSocketTask.send(URLSessionWebSocketTask.Message.string(text)) { error in
             if let error = error {                
                 self.delegate?.onError(connection: self, error: error)
@@ -93,15 +101,11 @@ class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocke
         }
     }
     
-    func send(data: Data) {
-        webSocketTask.send(URLSessionWebSocketTask.Message.data(data)) { error in
-            if let error = error {                
-                self.delegate?.onError(connection: self, error: error)
-            }
-        }
+    func onMessage(text: String) {
+        // some json parsing needed here
     }
 
     func openUrl(url: String) {
-        send(text: "{\"id\":\"21\",\"type\":\"request\",\"uri\":\"ssap://system.launcher/open\",\"payload\":{\"target\":\"http://www.inbox.lv\"}}")
+        send(text: "{\"\(commandId)\":\"21\",\"type\":\"request\",\"uri\":\"ssap://system.launcher/open\",\"payload\":{\"target\":\"http://www.inbox.lv\"}}")
     }
 }
