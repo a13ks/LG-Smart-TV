@@ -1,6 +1,11 @@
 import SwiftUI
 
 struct ContentView: View, WebSocketConnectionDelegate {
+    func onPaired(connection: WebSocketConnection, clientKey: String) {
+        self.clientKey = clientKey
+        print("paired")
+    }
+    
     func onConnected(connection: WebSocketConnection) {
         print("connected")
     }
@@ -27,6 +32,9 @@ struct ContentView: View, WebSocketConnectionDelegate {
     
     @State
     var userInput: String = ""
+    
+    @State
+    var userInputUrl: String = ""
     
     @State
     var tvWebSocket: WebSocketConnection?
@@ -69,12 +77,12 @@ struct ContentView: View, WebSocketConnectionDelegate {
                 Text("TV Paired").font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 Spacer().frame(height: 10)
                 Text(ipAddress).font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                TextField("URL", text: $userInput)
+                TextField("URL", text: $userInputUrl)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 Spacer().frame(height: 10)
                 Button("Go to website") {
-                    
+                    tvWebSocket?.openUrl(url: userInputUrl)
                 }.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 Spacer().frame(height: 30)
                 Spacer().frame(height: 10)

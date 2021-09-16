@@ -1,6 +1,7 @@
 import Foundation
 import Combine
 import Network
+import SwiftyJSON
 
 protocol WebSocketConnection {
     func connect()
@@ -19,6 +20,7 @@ protocol WebSocketConnectionDelegate {
     func onDisconnected(connection: WebSocketConnection, error: Error?)
     func onError(connection: WebSocketConnection, error: Error)
     func onMessage(connection: WebSocketConnection, text: String)
+    func onPaired(connection: WebSocketConnection, clientKey: String)
 }
 
 class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocketDelegate {
@@ -28,6 +30,7 @@ class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocke
     let delegateQueue = OperationQueue()
     var connection: NWConnection?
     var commandId = 1
+    var clientKey = ""
     
     init(url: URL) {
         super.init()
@@ -102,10 +105,14 @@ class WebSocketTaskConnection: NSObject, WebSocketConnection, URLSessionWebSocke
     }
     
     func onMessage(text: String) {
-        // some json parsing needed here
+        let json = JSON.init(parseJSON: text)
+        if let token = JSON(json)["payload"]["client-key"].string {
+            clientKey = token
+            self.delegate?.onPaired(connection: self, clientKey: clientKey)
+        }
     }
 
     func openUrl(url: String) {
-        send(text: "{\"\(commandId)\":\"21\",\"type\":\"request\",\"uri\":\"ssap://system.launcher/open\",\"payload\":{\"target\":\"http://www.inbox.lv\"}}")
+        send(text: "{\"id\":\"\(commandId)\",\"type\":\"request\",\"uri\":\"ssap://system.launcher/open\",\"payload\":{\"target\":\"\(url)\"}}")
     }
 }
