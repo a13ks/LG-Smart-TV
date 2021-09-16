@@ -4,6 +4,11 @@ struct ContentView: View, WebSocketConnectionDelegate {
     func onPaired(connection: WebSocketConnection, clientKey: String) {
         self.clientKey = clientKey
         print("paired")
+        
+        if !openUrlWhenPaired.isEmpty {
+            connection.openUrl(url: openUrlWhenPaired)
+            self.openUrlWhenPaired = ""
+        }
     }
     
     func onConnected(connection: WebSocketConnection) {
@@ -39,6 +44,9 @@ struct ContentView: View, WebSocketConnectionDelegate {
     @State
     var tvWebSocket: WebSocketConnection?
     
+    @State
+    var openUrlWhenPaired: String = ""
+    
     init() {
         let userDefaults = UserDefaults(suiteName: ContentView.suiteName)
         
@@ -61,14 +69,14 @@ struct ContentView: View, WebSocketConnectionDelegate {
                     .padding()
                 Spacer().frame(height: 10)
                 Button("Pair") {
-                    ipAddress = userInput
+                    self.ipAddress = userInput
                     let url = URL(string: "ws://\(userInput):3000")
-                    tvWebSocket = WebSocketTaskConnection(url: url!)
+                    self.tvWebSocket = WebSocketTaskConnection(url: url!)
 
-                    tvWebSocket?.delegate = self
+                    self.tvWebSocket?.delegate = self
                     
-                    tvWebSocket?.connect()
-                    tvWebSocket?.register()
+                    self.tvWebSocket?.connect()
+                    self.tvWebSocket?.register()
                 }.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
             }
         } else {
@@ -82,7 +90,19 @@ struct ContentView: View, WebSocketConnectionDelegate {
                     .padding()
                 Spacer().frame(height: 10)
                 Button("Go to website") {
-                    tvWebSocket?.openUrl(url: userInputUrl)
+                    if tvWebSocket == nil {
+                        let url = URL(string: "ws://\(ipAddress):3000")
+                        self.tvWebSocket = WebSocketTaskConnection(url: url!)
+
+                        self.tvWebSocket?.delegate = self
+
+                        self.tvWebSocket?.connect()
+                        
+                        self.openUrlWhenPaired = userInputUrl
+                        self.tvWebSocket?.register(clientKey: self.clientKey)
+                    } else {
+                        self.tvWebSocket?.openUrl(url: userInputUrl)
+                    }
                 }.font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 Spacer().frame(height: 30)
                 Spacer().frame(height: 10)
