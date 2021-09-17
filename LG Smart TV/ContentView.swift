@@ -1,4 +1,5 @@
 import SwiftUI
+import Common
 
 struct ContentView: View, WebSocketConnectionDelegate {
     func onPaired(connection: WebSocketConnection, clientKey: String) {
@@ -51,7 +52,7 @@ struct ContentView: View, WebSocketConnectionDelegate {
         let userDefaults = UserDefaults(suiteName: ContentView.suiteName)
         
         if userDefaults != nil {
-            var ip = (userDefaults?.string(forKey: "ipAddress"))
+            let ip = (userDefaults?.string(forKey: "ipAddress"))
             if ip != nil {
                 userInput = ip!
             }

@@ -11,9 +11,73 @@
 		5D1CAAC726F3CA9400CB4218 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CAAC626F3CA9400CB4218 /* ContentView.swift */; };
 		5D1CAAC926F3CA9500CB4218 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1CAAC826F3CA9500CB4218 /* Assets.xcassets */; };
 		5D1CAACC26F3CA9500CB4218 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1CAACB26F3CA9500CB4218 /* Preview Assets.xcassets */; };
-		5D1CAAD526F3CF2C00CB4218 /* WebSocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */; };
-		5D1CAAD826F3DA1E00CB4218 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5D1CAAD726F3DA1E00CB4218 /* SwiftyJSON */; };
+		5D1CAB0A26F46D6200CB4218 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5D1CAB0926F46D6200CB4218 /* Media.xcassets */; };
+		5D1CAB0C26F46D6200CB4218 /* ActionRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CAB0B26F46D6200CB4218 /* ActionRequestHandler.swift */; };
+		5D1CAB0E26F46D6200CB4218 /* Action.js in Resources */ = {isa = PBXBuildFile; fileRef = 5D1CAB0D26F46D6200CB4218 /* Action.js */; };
+		5D1CAB2526F470BA00CB4218 /* WebSocketConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */; };
+		5D1CAB2626F4711100CB4218 /* libCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1CAB1E26F470B000CB4218 /* libCommon.a */; };
+		5D1CAB2926F4711500CB4218 /* Action.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5D1CAB0726F46D6200CB4218 /* Action.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5D1CAB7126F476F100CB4218 /* libCommon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1CAB1E26F470B000CB4218 /* libCommon.a */; };
+		5D1CAB7726F47B4800CB4218 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5D1CAB7626F47B4800CB4218 /* SwiftyJSON */; };
+		5D1CAB7926F47B4E00CB4218 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 5D1CAB7826F47B4E00CB4218 /* SwiftyJSON */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5D1CAB2726F4711100CB4218 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D1CAAB926F3CA9400CB4218 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D1CAB1D26F470B000CB4218;
+			remoteInfo = Common;
+		};
+		5D1CAB2A26F4711500CB4218 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D1CAAB926F3CA9400CB4218 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D1CAB0626F46D6200CB4218;
+			remoteInfo = Action;
+		};
+		5D1CAB7226F476F100CB4218 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D1CAAB926F3CA9400CB4218 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D1CAB1D26F470B000CB4218;
+			remoteInfo = Common;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5D1CAB1C26F470B000CB4218 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D1CAB2C26F4711500CB4218 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5D1CAB2926F4711500CB4218 /* Action.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D1CAB6D26F475D500CB4218 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		5D1CAAC126F3CA9400CB4218 /* LG Smart TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "LG Smart TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +88,13 @@
 		5D1CAACD26F3CA9500CB4218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5D1CAAD326F3CD6900CB4218 /* LG Smart TV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "LG Smart TV.entitlements"; sourceTree = "<group>"; };
 		5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebSocketConnection.swift; sourceTree = "<group>"; };
+		5D1CAB0726F46D6200CB4218 /* Action.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Action.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D1CAB0926F46D6200CB4218 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		5D1CAB0B26F46D6200CB4218 /* ActionRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRequestHandler.swift; sourceTree = "<group>"; };
+		5D1CAB0D26F46D6200CB4218 /* Action.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Action.js; sourceTree = "<group>"; };
+		5D1CAB0F26F46D6200CB4218 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5D1CAB1E26F470B000CB4218 /* libCommon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCommon.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D1CAB7426F479BB00CB4218 /* Action.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Action.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,7 +102,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D1CAAD826F3DA1E00CB4218 /* SwiftyJSON in Frameworks */,
+				5D1CAB7926F47B4E00CB4218 /* SwiftyJSON in Frameworks */,
+				5D1CAB2626F4711100CB4218 /* libCommon.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D1CAB0426F46D6200CB4218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D1CAB7726F47B4800CB4218 /* SwiftyJSON in Frameworks */,
+				5D1CAB7126F476F100CB4218 /* libCommon.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D1CAB1B26F470B000CB4218 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,7 +130,10 @@
 			isa = PBXGroup;
 			children = (
 				5D1CAAC326F3CA9400CB4218 /* LG Smart TV */,
+				5D1CAB0826F46D6200CB4218 /* Action */,
+				5D1CAB1F26F470B000CB4218 /* Common */,
 				5D1CAAC226F3CA9400CB4218 /* Products */,
+				5D1CAB7526F47B4800CB4218 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -50,6 +141,8 @@
 			isa = PBXGroup;
 			children = (
 				5D1CAAC126F3CA9400CB4218 /* LG Smart TV.app */,
+				5D1CAB0726F46D6200CB4218 /* Action.appex */,
+				5D1CAB1E26F470B000CB4218 /* libCommon.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,7 +150,6 @@
 		5D1CAAC326F3CA9400CB4218 /* LG Smart TV */ = {
 			isa = PBXGroup;
 			children = (
-				5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */,
 				5D1CAAD326F3CD6900CB4218 /* LG Smart TV.entitlements */,
 				5D1CAAC426F3CA9400CB4218 /* LG_Smart_TVApp.swift */,
 				5D1CAAC626F3CA9400CB4218 /* ContentView.swift */,
@@ -76,6 +168,33 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		5D1CAB0826F46D6200CB4218 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				5D1CAB7426F479BB00CB4218 /* Action.entitlements */,
+				5D1CAB0926F46D6200CB4218 /* Media.xcassets */,
+				5D1CAB0B26F46D6200CB4218 /* ActionRequestHandler.swift */,
+				5D1CAB0D26F46D6200CB4218 /* Action.js */,
+				5D1CAB0F26F46D6200CB4218 /* Info.plist */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		5D1CAB1F26F470B000CB4218 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				5D1CAAD426F3CF2C00CB4218 /* WebSocketConnection.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		5D1CAB7526F47B4800CB4218 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,18 +205,60 @@
 				5D1CAABD26F3CA9400CB4218 /* Sources */,
 				5D1CAABE26F3CA9400CB4218 /* Frameworks */,
 				5D1CAABF26F3CA9400CB4218 /* Resources */,
+				5D1CAB2C26F4711500CB4218 /* Embed App Extensions */,
+				5D1CAB6D26F475D500CB4218 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D1CAB2826F4711100CB4218 /* PBXTargetDependency */,
+				5D1CAB2B26F4711500CB4218 /* PBXTargetDependency */,
+			);
+			name = "LG Smart TV";
+			packageProductDependencies = (
+				5D1CAB7826F47B4E00CB4218 /* SwiftyJSON */,
+			);
+			productName = "LG Smart TV";
+			productReference = 5D1CAAC126F3CA9400CB4218 /* LG Smart TV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5D1CAB0626F46D6200CB4218 /* Action */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D1CAB1326F46D6200CB4218 /* Build configuration list for PBXNativeTarget "Action" */;
+			buildPhases = (
+				5D1CAB0326F46D6200CB4218 /* Sources */,
+				5D1CAB0426F46D6200CB4218 /* Frameworks */,
+				5D1CAB0526F46D6200CB4218 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D1CAB7326F476F100CB4218 /* PBXTargetDependency */,
+			);
+			name = Action;
+			packageProductDependencies = (
+				5D1CAB7626F47B4800CB4218 /* SwiftyJSON */,
+			);
+			productName = Action;
+			productReference = 5D1CAB0726F46D6200CB4218 /* Action.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		5D1CAB1D26F470B000CB4218 /* Common */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D1CAB2226F470B000CB4218 /* Build configuration list for PBXNativeTarget "Common" */;
+			buildPhases = (
+				5D1CAB1A26F470B000CB4218 /* Sources */,
+				5D1CAB1B26F470B000CB4218 /* Frameworks */,
+				5D1CAB1C26F470B000CB4218 /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "LG Smart TV";
-			packageProductDependencies = (
-				5D1CAAD726F3DA1E00CB4218 /* SwiftyJSON */,
-			);
-			productName = "LG Smart TV";
-			productReference = 5D1CAAC126F3CA9400CB4218 /* LG Smart TV.app */;
-			productType = "com.apple.product-type.application";
+			name = Common;
+			productName = "LG WS";
+			productReference = 5D1CAB1E26F470B000CB4218 /* libCommon.a */;
+			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
 
@@ -109,6 +270,12 @@
 				LastUpgradeCheck = 1250;
 				TargetAttributes = {
 					5D1CAAC026F3CA9400CB4218 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					5D1CAB0626F46D6200CB4218 = {
+						CreatedOnToolsVersion = 12.5.1;
+					};
+					5D1CAB1D26F470B000CB4218 = {
 						CreatedOnToolsVersion = 12.5.1;
 					};
 				};
@@ -130,6 +297,8 @@
 			projectRoot = "";
 			targets = (
 				5D1CAAC026F3CA9400CB4218 /* LG Smart TV */,
+				5D1CAB0626F46D6200CB4218 /* Action */,
+				5D1CAB1D26F470B000CB4218 /* Common */,
 			);
 		};
 /* End PBXProject section */
@@ -144,6 +313,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5D1CAB0526F46D6200CB4218 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D1CAB0E26F46D6200CB4218 /* Action.js in Resources */,
+				5D1CAB0A26F46D6200CB4218 /* Media.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -151,13 +329,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D1CAAD526F3CF2C00CB4218 /* WebSocketConnection.swift in Sources */,
 				5D1CAAC726F3CA9400CB4218 /* ContentView.swift in Sources */,
 				5D1CAAC526F3CA9400CB4218 /* LG_Smart_TVApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5D1CAB0326F46D6200CB4218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D1CAB0C26F46D6200CB4218 /* ActionRequestHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D1CAB1A26F470B000CB4218 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D1CAB2526F470BA00CB4218 /* WebSocketConnection.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5D1CAB2826F4711100CB4218 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D1CAB1D26F470B000CB4218 /* Common */;
+			targetProxy = 5D1CAB2726F4711100CB4218 /* PBXContainerItemProxy */;
+		};
+		5D1CAB2B26F4711500CB4218 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D1CAB0626F46D6200CB4218 /* Action */;
+			targetProxy = 5D1CAB2A26F4711500CB4218 /* PBXContainerItemProxy */;
+		};
+		5D1CAB7326F476F100CB4218 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D1CAB1D26F470B000CB4218 /* Common */;
+			targetProxy = 5D1CAB7226F476F100CB4218 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		5D1CAACE26F3CA9500CB4218 /* Debug */ = {
@@ -322,6 +533,76 @@
 			};
 			name = Release;
 		};
+		5D1CAB1426F46D6200CB4218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Action/Action.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83M8JQW8EB;
+				INFOPLIST_FILE = Action/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.a13ks.LG-Smart-TV.Action";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5D1CAB1526F46D6200CB4218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Action/Action.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83M8JQW8EB;
+				INFOPLIST_FILE = Action/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "org.a13ks.LG-Smart-TV.Action";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		5D1CAB2326F470B000CB4218 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83M8JQW8EB;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 13.4;
+			};
+			name = Debug;
+		};
+		5D1CAB2426F470B000CB4218 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 83M8JQW8EB;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 13.4;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -343,6 +624,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		5D1CAB1326F46D6200CB4218 /* Build configuration list for PBXNativeTarget "Action" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D1CAB1426F46D6200CB4218 /* Debug */,
+				5D1CAB1526F46D6200CB4218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D1CAB2226F470B000CB4218 /* Build configuration list for PBXNativeTarget "Common" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D1CAB2326F470B000CB4218 /* Debug */,
+				5D1CAB2426F470B000CB4218 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -357,7 +656,12 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5D1CAAD726F3DA1E00CB4218 /* SwiftyJSON */ = {
+		5D1CAB7626F47B4800CB4218 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5D1CAAD626F3DA1E00CB4218 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+		5D1CAB7826F47B4E00CB4218 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5D1CAAD626F3DA1E00CB4218 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
